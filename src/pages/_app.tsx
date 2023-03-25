@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Inter, Inter_Tight, Overpass_Mono } from "next/font/google";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter_Tight({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
+      <Toaster />
     </>
   );
 }
