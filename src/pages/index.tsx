@@ -56,14 +56,14 @@ export default function Home(props: HomeProps) {
         </div>
         {/** third-row large screen */}
         <div className="hidden md:grid md:grid-cols-2 md:gap-4">
-          <SpotifyCard />
+          <SpotifyCard spotify={props?.spotify as any} />
           <LocationCard />
         </div>
 
         {/** third-row mobile */}
         <div className="grid grid-cols-2 gap-4 md:hidden">
           <GithubCard />
-          <SpotifyCard />
+          <SpotifyCard spotify={props?.spotify as any} />
         </div>
 
         {/** fourth-row large screen*/}

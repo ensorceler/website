@@ -3,9 +3,6 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import React from "react";
-import Image from "next/image";
-import { nightGif } from "../../public/assets";
-import { motion } from "framer-motion";
 import DayCard from "./DateTime/DayCard";
 import NightCard from "./DateTime/NightCard";
 
