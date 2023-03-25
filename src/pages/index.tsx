@@ -1,5 +1,5 @@
 import BirthdayCountdownCard from "@/components/BirthdayCountdownCard";
-import DateTimeCard from "@/components/DataTimeCard";
+import DateTimeCard from "@/components/DateTimeCard";
 import DiscordStatus from "@/components/DiscordStatus";
 import DropAMessageCard from "@/components/DropAMessageCard";
 import GithubCard from "@/components/GithubCard";
@@ -10,7 +10,16 @@ import SpotifyCard from "@/components/SpotifyCard";
 import TechStackCard from "@/components/TechStackCard";
 import Twitter from "@/components/Twitter";
 
-export default function Home() {
+interface HomeProps {
+  spotify: any;
+  listening_to_spotify: boolean;
+  kv: Object;
+  discord_user: Object;
+  activities: Array<any>;
+  discord_status: string;
+}
+
+export default function Home(props: HomeProps) {
   return (
     <>
       <main className="max-w-3xl mt-6 mb-10 md:mt-20 md:mb-20 ml-auto mr-auto px-6 py-4 flex flex-col gap-4">
@@ -22,7 +31,10 @@ export default function Home() {
         <div className="hidden md:grid md:grid-cols-2 md:gap-4">
           <div className="flex gap-2">
             <div className="flex-1">
-              <DiscordStatus />
+              <DiscordStatus
+                userInfo={props?.discord_user as any}
+                status={props?.discord_status}
+              />
             </div>
             <div className="grid grid-rows-2 gap-2 w-24 ">
               <DateTimeCard />
@@ -33,7 +45,10 @@ export default function Home() {
         </div>
         {/** second-row mobile */}
         <div className="grid grid-cols-2 gap-3 md:hidden ">
-          <DiscordStatus />
+          <DiscordStatus
+            userInfo={props?.discord_user as any}
+            status={props?.discord_status}
+          />
           <div className="grid grid-rows-2 gap-2">
             <DateTimeCard />
             <BirthdayCountdownCard />
@@ -78,4 +93,18 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(
+    "https://api.lanyard.rest/v1/users/1084586119011774625"
+  );
+  const apiData = await res.json();
+  console.log(apiData);
+  return {
+    props: {
+      ...apiData?.data,
+    },
+    revalidate: 10,
+  };
 }

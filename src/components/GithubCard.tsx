@@ -2,13 +2,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { matrixGif } from "../../public/assets";
 import { GithubIcon, ShareLinkIcon } from "@/ui/icons";
+import Link from "next/link";
 
 const GithubCard = () => {
   return (
-    <div
+    <Link
+      href="https://github.com/ensorceler"
+      target="_blank"
       className="p-6 group relative flex flex-col justify-between bg-green-500/20 rounded-2xl cursor-pointer overflow-hidden
-      hover:scale-[0.94] transition duration-700
-    "
+      hover:scale-[0.94] transition duration-700"
+      passHref
     >
       <Image
         className="z-0 brightness-[0.4]"
@@ -30,7 +33,7 @@ const GithubCard = () => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 export default GithubCard;

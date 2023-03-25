@@ -1,5 +1,6 @@
 import React from "react";
 import Avatar from "./Avatar";
+import Link from "next/link";
 
 const ProfileHeader = () => {
   return (
@@ -15,9 +16,9 @@ const ProfileHeader = () => {
           <p className="text-sm text-center md:text-left font-medium text-pink-300 text-glow-pink-500/50">
             22 y/o fullstack Typescript Developer{" "}
           </p>
-          <p className="text-sm font-medium text-pink-300 text-glow-pink-500/50">
-            blog ↗️
-          </p>
+          <Link href="/blog" target="_blank" passHref>
+            <p className="text-sm font-medium text-pink-300 ">blog ↗️</p>
+          </Link>
         </div>
       </div>
     </div>
